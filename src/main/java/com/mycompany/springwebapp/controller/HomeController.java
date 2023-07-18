@@ -14,11 +14,7 @@ public class HomeController {
 		log.info("실행1");
 		log.info("실행2");
 		log.info("실행3");
-<<<<<<< HEAD
-		log.info("실행6");
-=======
 		log.info("실행4");
->>>>>>> branch 'master' of https://github.com/yuyu062/springwebapp
 		return "index";
 	}
 }
