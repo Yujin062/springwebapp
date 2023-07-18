@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- xmlns: name space(디폴트) -->
-<!-- 접두사:태그명 -->
+<!-- 접두사:태그명: name space 선언(접두사 없을 시 디폴트 값 , 접두사-어디서 태그를 가져왔는 지 알려줌) -->
 <!-- xsi:schemaLocation = ML이름 ML정의파일 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
