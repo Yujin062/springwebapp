@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,13 +17,15 @@ public class Ch02Controller {
 		 return "ch02/content";
 	 }
 	 
-	 @GetMapping("/method")
+	 //@GetMapping("/method")
+	 @RequestMapping(value="/method", method=RequestMethod.GET)
 	 public String method1(String bkind, int bno) {
 		 log.info("bkind: " + bkind);
 		 log.info("bno: " + bno);
 		 return "ch02/content";
 	 }
-	 @PostMapping("/method")
+	 //@PostMapping("/method")
+	 @RequestMapping(value="/method", method=RequestMethod.POST)
 	 public String method2(String bkind, int bno) {
 		 log.info("bkind: " + bkind);
 		 log.info("bno: " + bno);
