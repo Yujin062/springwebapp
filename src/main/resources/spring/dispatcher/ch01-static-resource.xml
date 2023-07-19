@@ -6,10 +6,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-	
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/"></property>
-		<property name="suffix" value=".jsp"></property>
-	</bean>
+	<!-- 
+	/resources/** 경로가 포함되어 있을 경우 /resources 폴더로 바로 매핑
+	주의: resources 폴더는 WEB-INF 바깥쪽에 있어야 함 (URL로 접근 가능) 
+	-->
+	<mvc:resources mapping="/resources/**" location="/resources/" ></mvc:resources>
 
 </beans>
