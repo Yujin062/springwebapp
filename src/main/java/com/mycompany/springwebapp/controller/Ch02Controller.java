@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.springwebapp.dto.Ch02Dto;
 import com.mycompany.springwebapp.dto.Ch02FileInfo;
@@ -31,11 +32,19 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequestMapping("/ch02")
 public class Ch02Controller {
+	 //view 이름을 string으로 바로 받아서 리턴
 	 @RequestMapping("/content")
 	 public String content() {
 		 return "ch02/content";
 	 }
-	 
+	
+	/*//view이름을 ModelAndView 객체안에 넣어서 객체를 리턴
+	@RequestMapping("/content")
+	 public ModelAndView content() {
+		 ModelAndView mav = new ModelAndView();
+		 mav.setViewName("ch02/content");
+		 return mav;
+	 }*/
 	 //@GetMapping("/method")
 	 @RequestMapping(value="/method", method=RequestMethod.GET)
 	 public String method1(String bkind, int bno) {
