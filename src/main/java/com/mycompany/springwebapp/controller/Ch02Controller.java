@@ -1,7 +1,15 @@
 package com.mycompany.springwebapp.controller;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
@@ -112,6 +120,41 @@ public class Ch02Controller {
 		 Ch02FileInfo fileinfo = new Ch02FileInfo();
 		 fileinfo.setFileName("photo9.jpg");
 		 return fileinfo;
+	 }
+	 
+	 @GetMapping("/fileDownload")
+	 public void fileDownload(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	      String fileName = "photo12.jpg";
+	      String filePath = "/resources/images/photo/" + fileName;
+	      filePath = request.getServletContext().getRealPath(filePath);
+	      log.info(filePath);
+	      
+	      
+	      //응답 헤드에 Content-Type 추가
+	      String mimeType = request.getServletContext().getMimeType(filePath);
+	      response.setContentType(mimeType); //응답내용에 따라 ContentType을 정확히 지정해 함
+	      
+	      //응답 헤드에 한글 이름의 파일명을 ISO-8859-1 문자셋으로 인코딩해서 추가
+	      String userAgent = request.getHeader("User-Agent");
+	      if(userAgent.contains("Trident")|| userAgent.contains("MSIE")) {
+	    	  //IE
+	    	  fileName = URLEncoder.encode(fileName,"UTF-8");
+	    	  log.info("IE: " + fileName);
+	      }else {
+	    	 //Chrome, Edge, FireFox, Safari 
+	    	  fileName = new String(fileName.getBytes("UTF-8"),"ISO-8859-1");
+	    	  log.info("Chrome: " + fileName);
+	      }
+	      response.setHeader("Content-Disposition", "attachment; fileName=\"" + fileName + "\"" );//response.setHeader가 없으면 브라우저에 바로 보여줄 수 있으면 보여줌
+	      																					      // 바로 보여줄 수 없으면 파일이 다운로드됨
+	      
+	      //응답 본문에 파일데이터 싣기
+	      OutputStream os = response.getOutputStream();
+	      InputStream is = new FileInputStream(filePath);
+	      Path path = Paths.get(filePath);
+	      Files.copy(path, os);
+	      os.flush();
+	      os.close();
 	 }
 	 
 	 //요청할 때 실행하기 전 ADMIN권한이 있는지 확인
