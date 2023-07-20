@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mycompany.springwebapp.dto.Ch02Dto;
 import com.mycompany.springwebapp.dto.Ch02FileInfo;
+import com.mycompany.springwebapp.interceptor.Auth;
+import com.mycompany.springwebapp.interceptor.Auth.Role;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -42,13 +45,19 @@ public class Ch02Controller {
 	 
 	 //@PutMapping("/method")
 	 @RequestMapping(value="/method", method=RequestMethod.PUT)
-	 public void method3(@RequestBody String json, HttpServletResponse response) throws Exception{
-		 JSONObject jsonObject = new JSONObject(json);
-		 String bkind = jsonObject.getString("bkind");
-		 int bno = jsonObject.getInt("bno");
-		 log.info("bkind: " + bkind);
-		 log.info("bno: " + bno);
+	 public void method3(@RequestBody Ch02Dto dto, HttpServletResponse response) throws Exception{
+		 log.info("bkind: " + dto.getBkind());
+		 log.info("bno: " + dto.getBno());
+
+		 JSONObject root = new JSONObject();
+		 root.put("result", "success");
+		 String responseJson = root.toString(); // {"result":"success"}
 		 
+		 response.setContentType("application/json; charset=UTF-8");
+		 PrintWriter pw = response.getWriter();
+		 pw.print(responseJson);
+		 pw.flush();
+		 pw.close();
 		 
 	 }
 	 //@DeleteMapping("/method")
@@ -103,6 +112,14 @@ public class Ch02Controller {
 		 Ch02FileInfo fileinfo = new Ch02FileInfo();
 		 fileinfo.setFileName("photo9.jpg");
 		 return fileinfo;
+	 }
+	 
+	 //요청할 때 실행하기 전 ADMIN권한이 있는지 확인
+	 @RequestMapping("/filterAndInterceptor")
+	 @Auth(Role.ADMIN)
+	 public String adminMethod() {
+		 log.info("실행");
+		 return "ch02/adminPage";
 	 }
 }
 
