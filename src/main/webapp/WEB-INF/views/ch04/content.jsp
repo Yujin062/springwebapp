@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
@@ -46,7 +47,7 @@
                </div>
                <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text">param5</span></div>
-                  <input type="date" name="param5" class="form-control"value="${ch04Form1.param5}">
+                  <input type="date" name="param5" class="form-control" value='<fmt:formatDate value="${ch04Form1.param5}" pattern="yyyy-MM-dd"/>'>
                   <span class="param5-error text-danger"></span>
                </div>
                <input class="mt-2 btn btn-info btn-sm" type="submit" value="요청"/>
