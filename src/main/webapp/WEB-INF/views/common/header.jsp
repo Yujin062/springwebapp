@@ -5,7 +5,7 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="icon" href="${pageContext.request.contextPath}/resources/favicon.ico" type="image/x-icon">
+      <link rel="icon" href="${pageContext.request.contextPath}/resources/images/logo-spring.png" type="image/x-icon">
       <title>Insert title here</title>
       
       <!-- Bootstrap을 사용하기 위한 외부 라이브러리 가져오기 -->

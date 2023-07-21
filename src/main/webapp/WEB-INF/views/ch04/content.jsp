@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
@@ -12,21 +13,24 @@
             POST 방식으로 요청
          </div>
          <div class="card-body">
-            <form id="form1" method="post" action="method1" onsubmit="checkData()">
+            <form id="form1" method="post" action="method1">
                <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text">param1</span></div>
-                  <input type="text" name="param1" class="form-control" value="">
-                  <span class="param1-error text-danger"></span>
+                  <input type="text" name="param1" class="form-control" value="${ch04Form1.param1}">
+                  <!-- <span class="param2-error text-danger"></span> -->
+                  <form:errors path="ch04Form1.param1" cssClass="param1-error text-danger"/>
                </div>
                <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text">param2</span></div>
-                  <input type="text" name="param2" class="form-control" value="" >
-                  <span class="param2-error text-danger"></span>
+                  <input type="text" name="param2" class="form-control" value="${ch04Form1.param2}" >
+                  <!-- <span class="param2-error text-danger"></span> -->
+                  <form:errors path="ch04Form1.param2" cssClass="param2-error text-danger"/>
                </div>
                <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text">param3</span></div>
-                  <input type="text" name="param3" class="form-control" value="">
-                  <span class="param3-error text-danger"></span>
+                  <input type="text" name="param3" class="form-control" value="${ch04Form1.param3}">
+                  <!-- <span class="param3-error text-danger"></span> -->
+                   <form:errors path="ch04Form1.param3" cssClass="param3-error text-danger"/>
                </div>
                <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text">param4</span></div>
