@@ -32,7 +32,7 @@
                   <div class="input-group-prepend"><span class="input-group-text">param3</span></div>
                   <input type="text" name="param3" class="form-control" value="${ch04Form1.param3}">
                   <!-- <span class="param3-error text-danger"></span> -->
-                   <form:errors path="ch04Form1.param3" cssClass="param3-error text-danger"/>
+             
                </div>
                <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text">param4</span></div>
@@ -130,24 +130,27 @@
    
       <div class="card m-2">
          <div class="card-header">
-            AJAX로 요청
+            	실습1 AJAX로 요청
          </div>
          <div class="card-body">
-            <form id="form2" name="form2">
+            <form id="form2" name="form2" action="method2">
                <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text">param1</span></div>
                   <input type="text" id="param1" name="param1" class="form-control">
-                  <span class="param1-error text-danger"></span>
+                  <!-- <span class="param1-error text-danger"></span> -->
+                   <form:errors path="ch04Form2.param1" cssClass="param1-error text-danger"/>
                </div>
                <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text">param2</span></div>
                   <input type="text" id="param2" name="param2" class="form-control">
-                  <span class="param2-error text-danger"></span>
+                  <!-- <span class="param2-error text-danger"></span> -->
+                   <form:errors path="ch04Form2.param2" cssClass="param2-error text-danger"/>
                </div>
                <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text">param3</span></div>
                   <input type="text" id="param3" name="param3" class="form-control">
                   <span class="param3-error text-danger"></span>
+                   <form:errors path="ch04Form2.param3" cssClass="param1-error text-danger"/>
                </div>
                <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text">param4</span></div>
@@ -174,12 +177,12 @@
                const param1 = $("#param1").val(); //주민번호: xxxxxx-1,2,3,4xxxxxx
                const param2 = $("#param2").val(); //년월일: 19680315
                const param3 = $("#param3").val(); //패스워드: 알파벳으로시작 최소 8자 초대 10
-               const param4 = $("#form1 input[name=param4]:checked").val();
+               const param4 = $("#form2 input[name=param4]:checked").val();
                const param5 = $("#param5").val();
                
                let checkData = true;
                
-               const param1Error = $("#form2 .param1-error");
+              /*  const param1Error = $("#form2 .param1-error");
                param1Error.html("");
                if(param1 === "") {
                   param1Error.html("필수 입력 사항");
@@ -191,11 +194,11 @@
                      param1Error.html("주민번호 형식이 아님");
                      checkData = false;
                   }
-               }
+               } */
                
                if(checkData) {
                   $.ajax({
-                     url:"method1",
+                     url:"method2",
                      method:"post",
                      data: {
                         param1:param1, 

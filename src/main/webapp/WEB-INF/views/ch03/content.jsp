@@ -178,28 +178,6 @@
                   }
                });
             }
-            function requestPost() {
-               const param1 = document.form1.param1.value;
-               const param2 = document.querySelector("#param2").value;
-               const param3 = $("#param3").val();
-               const param4 = $("#form1 input[name=param4]:checked").val();
-               const param5 = $("#param5").val();
-               
-               $.ajax({
-                  url:"method4",
-                  method:"post",
-                  data: {
-                     param1:param1, 
-                     param2, 
-                     param3, 
-                     param4, 
-                     param5
-                  },
-                  success:function(data){ 
-                	  console.log(data);
-                  }
-               });
-            }
             
             function requestPost2() {
                const param1 = document.form1.param1.value;
