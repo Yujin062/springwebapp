@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
@@ -36,16 +37,16 @@
                   <div class="input-group-prepend"><span class="input-group-text">param4</span></div>
                   <div class="btn-group btn-group-toggle" data-toggle="buttons">
                      <label class="btn btn-secondary active">
-                       <input type="radio" name="param4" checked value="true"> true
+                       <input type="radio" name="param4" <c:if test="${ch04Form1.param4}">checked</c:if> value="true"> true
                      </label>
                      <label class="btn btn-secondary">
-                       <input type="radio" name="param4" value="false"> false
+                       <input type="radio" name="param4" <c:if test="${!ch04Form1.param4}">checked</c:if> value="false"> false
                      </label>
                   </div>
                </div>
                <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text">param5</span></div>
-                  <input type="date" name="param5" class="form-control">
+                  <input type="date" name="param5" class="form-control"value="${ch04Form1.param5}">
                   <span class="param5-error text-danger"></span>
                </div>
                <input class="mt-2 btn btn-info btn-sm" type="submit" value="요청"/>
