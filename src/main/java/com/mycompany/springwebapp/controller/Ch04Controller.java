@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mycompany.springwebapp.dto.Ch04Dto;
+import com.mycompany.springwebapp.dto.Ch04Form1;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,12 +18,12 @@ public class Ch04Controller {
 		 return "ch04/content";
 	 }
 	 @PostMapping("/method1")
-	 public String method1(Ch04Dto dto) {
-		 log.info("param1: " + dto.getParam1());
-		 log.info("param2: " + dto.getParam2());
-		 log.info("param3: " + dto.getParam3());
-		 log.info("param4: " + dto.isParam4());
-		 log.info("param5: " + dto.getParam5());
+	 public String method1(@Valid Ch04Form1 form1) {
+		 log.info("param1: " + form1.getParam1());
+		 log.info("param2: " + form1.getParam2());
+		 log.info("param3: " + form1.getParam3());
+		 log.info("param4: " + form1.isParam4());
+		 log.info("param5: " + form1.getParam5());
 		 return "redirect:/ch04/content";
 	 }
 }
