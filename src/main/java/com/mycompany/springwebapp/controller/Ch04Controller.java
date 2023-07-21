@@ -84,9 +84,9 @@ public class Ch04Controller {
 		 }
 		 //요청 처리 코드
 		 log.info("mid: " + form3.getMid());
-		 log.info("param2: " + form3.getMpassword());
-		 log.info("param3: " + form3.getMemail());
-		 log.info("param4: " + form3.getMtel());
+		 log.info("mpassword: " + form3.getMpassword());
+		 log.info("memail: " + form3.getMemail());
+		 log.info("mtel: " + form3.getMtel());
 		 return "redirect:/";
 	 }
 }

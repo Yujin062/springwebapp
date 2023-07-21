@@ -230,22 +230,22 @@
                      <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text">mid</span></div>
                         <input type="text" name="mid" class="form-control" value="${joinForm.mid}" autocomplete="username">
-                        <form:errors cssClass="text-danger" path="joinForm.mid"/>
+                        <form:errors cssClass="text-danger" path="ch04Form3.mid"/>
                      </div>
                      <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text">mpassword</span></div>
                         <input type="password" name="mpassword" class="form-control" value="${joinForm.mpassword}" autocomplete="current-password">
-                        <form:errors cssClass="text-danger" path="joinForm.mpassword"/>
+                        <form:errors cssClass="text-danger" path="ch04Form3.mpassword"/>
                      </div>
                      <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text">memail</span></div>
                         <input type="text" name="memail" class="form-control" value="${joinForm.memail}">
-                        <form:errors cssClass="text-danger" path="joinForm.memail"/>
+                        <form:errors cssClass="text-danger" path="ch04Form3.memail"/>
                      </div>
                      <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text">mtel</span></div>
                         <input type="text" name="mtel" class="form-control" value="${joinForm.mtel}">
-                        <form:errors cssClass="text-danger" path="joinForm.mtel"/>
+                        <form:errors cssClass="text-danger" path="ch04Form3.mtel"/>
                      </div>
                      <input class="btn btn-info" type="submit" value="가입"/>
                   </form>
