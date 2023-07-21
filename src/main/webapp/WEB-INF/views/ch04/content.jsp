@@ -12,7 +12,7 @@
             POST 방식으로 요청
          </div>
          <div class="card-body">
-            <form id="form0" method="post" action="method1" onsubmit="checkData()">
+            <form id="form1" method="post" action="method1" onsubmit="checkData()">
                <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text">param1</span></div>
                   <input type="text" name="param1" class="form-control" value="">
@@ -127,7 +127,7 @@
             AJAX로 요청
          </div>
          <div class="card-body">
-            <form id="form1" name="form1">
+            <form id="form2" name="form2">
                <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text">param1</span></div>
                   <input type="text" id="param1" name="param1" class="form-control">
@@ -217,7 +217,7 @@
                   	회원 가입 폼
                </div>
                <div class="card-body">         
-                  <form method="post" action="join">
+                  <form id="form3" method="post" action="join">
                      <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text">mid</span></div>
                         <input type="text" name="mid" class="form-control" value="${joinForm.mid}" autocomplete="username">
@@ -248,7 +248,7 @@
                   	로그인 폼
                </div>
                <div class="card-body">
-                  <form method="post" action="login">
+                  <form id="form4" method="post" action="login">
                      <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text">mid</span></div>
                         <input type="text" name="mid" class="form-control" value="${loginForm.mid}">
