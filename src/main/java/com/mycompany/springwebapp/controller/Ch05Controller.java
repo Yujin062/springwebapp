@@ -2,12 +2,16 @@ package com.mycompany.springwebapp.controller;
 
 import java.lang.ProcessBuilder.Redirect;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,6 +29,26 @@ public class Ch05Controller {
 			HttpServletRequest request) {
 		log.info("User-Agent: " + userAgent);
 		log.info("client IP: " + request.getRemoteAddr());
+		return "redirect:/ch05/content";
+	}
+	
+	@RequestMapping(value="/createCookie", method=RequestMethod.GET)
+	public String createCookie(HttpServletResponse response) {
+		Cookie cookie = new Cookie("useremail", "summer@mycompany.com");
+		cookie.setDomain("localhost");
+		cookie.setPath("/");
+		cookie.setMaxAge(30*60);
+		cookie.setHttpOnly(true);
+		cookie.setSecure(false);
+		response.addCookie(cookie);
+		
+		return "redirect:/ch05/content";
+	}
+	
+	@RequestMapping(value="/getCookie", method=RequestMethod.GET)
+	public String createCookie(@CookieValue("useremail") String userEmail) {
+		log.info("실행");
+		log.info("useremail: " + userEmail);
 		return "redirect:/ch05/content";
 	}
 }
