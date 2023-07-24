@@ -35,11 +35,11 @@ public class Ch05Controller {
 	@RequestMapping(value="/createCookie", method=RequestMethod.GET)
 	public String createCookie(HttpServletResponse response) {
 		Cookie cookie = new Cookie("useremail", "summer@mycompany.com");
-		cookie.setDomain("localhost");
-		cookie.setPath("/");
-		cookie.setMaxAge(30*60);
-		cookie.setHttpOnly(true);
-		cookie.setSecure(false);
+		cookie.setDomain("localhost"); 			//쿠키를 재전송할 서버를 지정
+		cookie.setPath("/springwebapp/ch05");	//쿠키를 재전송할 경로를 지정
+		cookie.setMaxAge(30*60);				//쿠키의 저장 기간(단위: s, 파일에 저장), 시간을 지정안할 경우: 브라우저 메모리 저장 
+		cookie.setHttpOnly(true);				//true: 서버만 이용, false: JavaScript에서 접근허용
+		cookie.setSecure(false);				// false: http, https 모두 쿠키를  재전송, true: https만 사용
 		response.addCookie(cookie);
 		
 		return "redirect:/ch05/content";

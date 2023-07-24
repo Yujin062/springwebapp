@@ -261,12 +261,12 @@
                      <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text">mid</span></div>
                         <input type="text" name="mid" class="form-control" value="${loginForm.mid}">
-                        <form:errors cssClass="text-danger" path="loginForm.mid"/>
+                        <form:errors cssClass="text-danger" path="ch04Form4.mid"/>
                      </div>
                      <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text">mpassword</span></div>
                         <input type="password" name="mpassword" class="form-control" value="${loginForm.mpassword}">
-                        <form:errors cssClass="text-danger" path="loginForm.mpassword"/>
+                        <form:errors cssClass="text-danger" path="ch04Form4.mpassword"/>
                      </div>
                      <input class="btn btn-info" type="submit" value="로그인"/>
                   </form>

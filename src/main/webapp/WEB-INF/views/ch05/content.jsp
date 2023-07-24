@@ -11,7 +11,13 @@
    	</div>
    	<div class="m-2">
    		<a href="createCookie" class="btn btn-info btn-sm">쿠키생성</a>
-   		<a href="getCookie" class="btn btn-info btn-sm">쿠키얻기</a>
+   		<a href="getCookie" class="btn btn-info btn-sm">쿠키얻기(서버)</a>
+   		<a href="javascript:getCookie()" class="btn btn-info btn-sm">쿠키얻기(JavaScript)</a>
+   		<script>
+   			function getCookie(){
+   				console.log(document.cookie);
+   			}
+   		</script>
    	</div>
    </div>
 </div>
