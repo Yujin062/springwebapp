@@ -2,6 +2,8 @@ package com.mycompany.springwebapp.controller;
 
 import java.lang.ProcessBuilder.Redirect;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -19,8 +21,10 @@ public class Ch05Controller {
 	}
 	
 	@GetMapping("/getHeaderValue")
-	public String getHeaderValue(@RequestHeader("User-Agent") String userAgent) {
+	public String getHeaderValue(@RequestHeader("User-Agent") String userAgent,
+			HttpServletRequest request) {
 		log.info("User-Agent: " + userAgent);
+		log.info("client IP: " + request.getRemoteAddr());
 		return "redirect:/ch05/content";
 	}
 }
