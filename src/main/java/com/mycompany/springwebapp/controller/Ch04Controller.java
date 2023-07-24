@@ -1,6 +1,5 @@
 package com.mycompany.springwebapp.controller;
 
-import javax.sound.midi.MidiChannel;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -16,6 +15,8 @@ import com.mycompany.springwebapp.dto.Ch04Form2;
 import com.mycompany.springwebapp.dto.Ch04Form2Validator;
 import com.mycompany.springwebapp.dto.Ch04Form3;
 import com.mycompany.springwebapp.dto.Ch04Form3Validator;
+import com.mycompany.springwebapp.dto.Ch04Form4;
+import com.mycompany.springwebapp.dto.Ch04Form4Validator;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -87,6 +88,23 @@ public class Ch04Controller {
 		 log.info("mpassword: " + form3.getMpassword());
 		 log.info("memail: " + form3.getMemail());
 		 log.info("mtel: " + form3.getMtel());
+		 return "redirect:/";
+	 }
+	 @InitBinder("ch04Form4")
+	 public void ch04Form4Validator(WebDataBinder binder) {
+		 binder.setValidator(new Ch04Form4Validator());
+	 }
+	 @PostMapping("/login")
+	 //pom.xml에 validation-api 라이브러리 의존설정 필요
+	 //request.setAttribute("ch04Form1", form1);으로 자동저장
+	 public String login(@Valid Ch04Form4 form4, Errors errors) {
+		 //errors.rejectValue(...)가 한번이라도 호출되었다면 hasError()는 true를 리턴
+		 if(errors.hasErrors()) {
+			 return "ch04/content";
+		 }
+		 //요청 처리 코드
+		 log.info("mid: " + form4.getMid());
+		 log.info("mpassword: " + form4.getMpassword());
 		 return "redirect:/";
 	 }
 }
