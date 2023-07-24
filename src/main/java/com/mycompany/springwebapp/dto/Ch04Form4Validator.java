@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 public class Ch04Form4Validator implements Validator {@Override
    public boolean supports(Class<?> clazz) {
       log.info("실행");
-      boolean check = Ch04Form3.class.isAssignableFrom(clazz);
+      boolean check = Ch04Form4.class.isAssignableFrom(clazz);
       return check;
    }
 
