@@ -1,12 +1,22 @@
 package com.mycompany.springwebapp.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URLEncoder;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -77,7 +87,38 @@ public class Ch09Controller {
 		
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("result", "success");
+		jsonObject.put("saveFilename", "saveFilename");
 		String json = jsonObject.toString();
 		return json;
 	}
+	
+	 @GetMapping("/filedownload")
+	 public void filedownload(String saveFilename, HttpServletRequest request, HttpServletResponse response) throws Exception{
+	      String fileName = saveFilename;
+	      String filePath = "C:/OTI/uploadfiles/" + fileName;
+	      
+	      //응답 헤드에 Content-Type 추가
+	      String mimeType = request.getServletContext().getMimeType(filePath);
+	      response.setContentType(mimeType);
+	      
+	      //응답 헤드에 한글 이름의 파일명을 ISO-8859-1 문자셋으로 인코딩해서 추가
+	      String userAgent = request.getHeader("User-Agent");
+	      if(userAgent.contains("Trident")|| userAgent.contains("MSIE")) {
+	    	  //IE
+	    	  fileName = URLEncoder.encode(fileName,"UTF-8");
+	      }else {
+	    	 //Chrome, Edge, FireFox, Safari 
+	    	  fileName = new String(fileName.getBytes("UTF-8"),"ISO-8859-1");
+	      }
+	      response.setHeader("Content-Disposition", "attachment; fileName=\"" + fileName + "\"" );//response.setHeader가 없으면 브라우저에 바로 보여줄 수 있으면 보여줌
+	      																					      // 바로 보여줄 수 없으면 파일이 다운로드됨
+	      
+	      //응답 본문에 파일데이터 싣기
+	      OutputStream os = response.getOutputStream();
+	      InputStream is = new FileInputStream(filePath);
+	      Path path = Paths.get(filePath);
+	      Files.copy(path, os);
+	      os.flush();
+	      os.close();
+	 }
 }

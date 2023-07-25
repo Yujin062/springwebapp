@@ -34,6 +34,7 @@
             </form>
          </div>
          <script>
+         	var saveFilename;
             function fileupload() {
                //입력된 정보를 얻기
                const title = $("#title").val();
@@ -60,6 +61,8 @@
 	                  if(data.result === "success") {
 	                     window.alert("파일 전송이 성공됨");
 	                  }  
+	                  saveFilename = data.saveFilename;
+	                  $(#link1).attr("href","filedownload?saveFilename=" + saveFilename);
                	  }
                });
             }
@@ -71,15 +74,15 @@
             File Downlaod
          </div>
          <div class="card-body">
-            <a href="filedownload?fileNo=1"
-               class="btn btn-info btn-sm" onclick="filedownload(1)">파일 다운로드</a>
+            <a id="link1" href="#" class="btn btn-info btn-sm">파일 다운로드</a>
+            <a href="javascript:filedownload()" class="btn btn-info btn-sm" onclick="filedownload()">파일 보기</a>
             <hr/>
             <!-- <img src="filedownload?fileNo=1" width="200px"/> -->
             <img id="downloadImg" width="200px"/>
          </div>
          <script type="text/javascript">
-            function filedownload(fileNo) {
-               $("#downloadImg").attr("src", "filedownload?fileNo="+fileNo);
+            function filedownload() {
+               $("#downloadImg").attr("src", "filedownload?saveFilename="+saveFilename);
             }
          </script>
       </div>
