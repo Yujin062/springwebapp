@@ -20,4 +20,9 @@ public class Ch11Controller {
       return "ch11/content";
    }
    
+   @GetMapping("/form1")
+   public String form1() {
+	   return "ch11/form1";
+   }
+   
 }
