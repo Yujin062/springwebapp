@@ -11,7 +11,14 @@
    </div>
    <div class="card-body">
 		<form:form method="post" modelAttribute="member">
-			<form:input path="mid"/>
+			<div class="form-group">
+				<label for="mid">ID</label>
+				<form:input path="mid" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label for="mname">Name</label>
+				<form:input path="mname" class="form-control"/>
+			</div>
 		</form:form>
    </div>		
 </div>

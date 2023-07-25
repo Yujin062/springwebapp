@@ -21,6 +21,8 @@ public class Ch11Controller {
    
    @GetMapping("/form1")
    public String form1(@ModelAttribute("member") Ch11Member member) {
+	   member.setMid("summer");
+	   member.setMname("홍길동");
 	   return "ch11/form1";
    }
    
