@@ -6,10 +6,24 @@
 <%-- index.jsp의 중앙 내용 --%>
 <div class="card m-2">
    <div class="card-header">
-       	 예외 처리 내용
+       	파일 업로드와 다운로드
    </div>
    <div class="card-body">
-	   서버가 정상적으로 동작하지 않습니다. 다시 도와주세요
+	   	<div>
+	   		<a href="handlingException1" class="btn btn-info btn-sm">try-catch</a>
+	   	</div>
+	   	<div class="mt-2">
+	   		<a href="handlingException2" class="btn btn-info btn-sm">NullPointerException</a>
+	   	</div>
+	    <div class="mt-2">
+	   		<a href="handlingException3" class="btn btn-info btn-sm">ClasscastException</a>
+	   	</div>
+	   	<div class="mt-2">
+	   		<a href="handlingException4" class="btn btn-info btn-sm">Ch10soldOutException</a>
+	   	</div>
+	   	<div class="mt-2">
+	   		<a href="handlingException5" class="btn btn-info btn-sm">Exception</a>
+	   	</div>
    </div>		
 </div>
 
