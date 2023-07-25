@@ -6,24 +6,53 @@
 <%-- index.jsp의 중앙 내용 --%>
 <div class="card m-2">
    <div class="card-header">
-       	파일 업로드와 다운로드
+       	스프링 태그 라이브러리
    </div>
    <div class="card-body">
-	   	<div>
-	   		<a href="handlingException1" class="btn btn-info btn-sm">try-catch</a>
-	   	</div>
-	   	<div class="mt-2">
-	   		<a href="handlingException2" class="btn btn-info btn-sm">NullPointerException</a>
-	   	</div>
-	    <div class="mt-2">
-	   		<a href="handlingException3" class="btn btn-info btn-sm">ClasscastException</a>
-	   	</div>
-	   	<div class="mt-2">
-	   		<a href="handlingException4" class="btn btn-info btn-sm">Ch10soldOutException</a>
-	   	</div>
-	   	<div class="mt-2">
-	   		<a href="handlingException5" class="btn btn-info btn-sm">Exception</a>
-	   	</div>
+	 <div class="card">
+         <div class="card-header">
+            DTO 객체(Command Object)와 폼 연결
+         </div>
+         <div class="card-body">
+            <a href="form1" class="btn btn-info btn-sm">form1</a>
+         </div>
+      </div>
+      
+      <div class="card">
+         <div class="card-header">
+            DTO 객체의 필드값을 select로 세팅
+         </div>
+         <div class="card-body">
+            <a href="form2" class="btn btn-info btn-sm">form2</a>
+         </div>
+      </div>
+      
+      <div class="card">
+         <div class="card-header">
+            DTO 객체의 필드값을 checkbox로 세팅
+         </div>
+         <div class="card-body">
+            <a href="form3" class="btn btn-info btn-sm">form3</a>
+         </div>
+      </div>
+      
+      <div class="card">
+         <div class="card-header">
+            DTO 객체의 필드값을 radio로 세팅
+         </div>
+         <div class="card-body">
+            <a href="form4" class="btn btn-info btn-sm">form4</a>
+         </div>
+      </div>
+      
+      <div class="card">
+         <div class="card-header">
+            국제화를 적용한 폼
+         </div>
+         <div class="card-body">
+            <a href="form5" class="btn btn-info btn-sm">form5</a>
+         </div>
+      </div> 
    </div>		
 </div>
 

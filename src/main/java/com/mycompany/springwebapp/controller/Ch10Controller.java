@@ -61,6 +61,6 @@ public class Ch10Controller {
    public String handlingException5() {
        String data = "abc";
        int number = Integer.parseInt(data);
-	   return "ch10/content";
+	   return "redirect:/ch10/content";
    }
 }

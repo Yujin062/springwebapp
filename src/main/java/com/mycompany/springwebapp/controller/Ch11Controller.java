@@ -12,12 +12,12 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping("/ch10")
+@RequestMapping("/ch11")
 public class Ch11Controller {
    
    @RequestMapping("/content")
    public String content() {
-      return "ch10/content";
+      return "ch11/content";
    }
    
 }
