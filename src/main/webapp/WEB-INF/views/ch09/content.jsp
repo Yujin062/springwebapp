@@ -27,7 +27,9 @@
                    <label for="attach">Example file input</label>
                    <input type="file" class="form-control-file" id="attach" name="attach">
                  </div>
+                 <!-- 방법1 -->
                  <button class="btn btn-info btn-sm">Form 파일 업로드</button>
+                 <!-- 방법2 -->
                  <a href="javascript:fileupload()" class="btn btn-info btn-sm">AJAX 파일 업로드</a>
             </form>
          </div>
@@ -36,7 +38,8 @@
                //입력된 정보를 얻기
                const title = $("#title").val();
                const desc = $("#desc").val();
-               const attach = document.querySelector("#attach").files[0];
+               //파일에서 선택된 것은 배열형태이고, 그 중 첫번 째 파일(multiple 속성 추가시 여러개 파일 업로드 가능)
+               const attach = document.querySelector("#attach").files[0]; 
                
                //Multipart/form-data
                const formData = new FormData();
@@ -44,19 +47,20 @@
                formData.append("desc", desc);
                formData.append("attach", attach);
                
-               //Ajax로 서버로 전송
+               //Ajax로 서버로 전송(응답으로 json)
                $.ajax({
                   url: "fileuploadAjax",
                   method: "post",
                   data: formData,
                   cache: false,        //파일이 포함되어 있으니, 브라우저 메모리에 저장하지 마라
                   processData: false,  //title=xxx&desc=yyy& 씩으로 만들지 마라
-                  contentType: false   //파트마다 Content-Type이 포함되기 때문에 따로 헤더에 Content-Type에 추가하지 마라
-               }).done((data) => {
-                  console.log(data);
-                  if(data.result === "success") {
-                     window.alert("파일 전송이 성공됨");
-                  }
+                  contentType: false,   //파트마다 Content-Type이 포함되기 때문에 따로 헤더에 Content-Type에 추가하지 마라(mutiple-> 파일마다 모두 다름)
+               	  success: function(data){
+               		  console.log(data);
+	                  if(data.result === "success") {
+	                     window.alert("파일 전송이 성공됨");
+	                  }  
+               	  }
                });
             }
          </script>
