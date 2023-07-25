@@ -1,5 +1,8 @@
 package com.mycompany.springwebapp.controller;
 
+import java.io.File;
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -19,12 +22,19 @@ public class Ch09Controller {
 	}
 	
 	@PostMapping("/fileupload")
-	public String fileupload(String title, String desc, MultipartFile attach) {;
+	public String fileupload(String title, String desc, MultipartFile attach) throws Exception{
 		log.info("title: " + title);
 		log.info("desc: " + desc);
 		log.info("originalFilename: " + attach.getOriginalFilename());
 		log.info("contentType: " + attach.getContentType());
 		log.info("file size: " + attach.getSize());
+		
+		//받은 파일을 영구적으로 저장하기
+		//실제 서버에 저장되는 파일 이름(중복이 되면 안됌)
+		String saveFilename = new Date().getTime() + "-" + attach.getOriginalFilename();
+		String saveFilepath = "D:/oti-2/uploadfiles/" + saveFilename;
+		File file = new File(saveFilepath);
+		attach.transferTo(file);
 		
 		return "redirect:/ch09/content";
 	}
