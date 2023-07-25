@@ -32,7 +32,7 @@ public class Ch09Controller {
 		//받은 파일을 영구적으로 저장하기
 		//실제 서버에 저장되는 파일 이름(중복이 되면 안됌)
 		String saveFilename = new Date().getTime() + "-" + attach.getOriginalFilename();
-		String saveFilepath = "D:/oti-2/uploadfiles/" + saveFilename;
+		String saveFilepath = "C:/OTI/uploadfiles/" + saveFilename;
 		File file = new File(saveFilepath);
 		attach.transferTo(file);
 		
