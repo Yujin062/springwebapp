@@ -30,6 +30,12 @@
     <!-- 
         방법2: 서블릿 3.0이상에서 지원하는 표준 라이브러리를 이용
     web.xml에 설정내용을 추가
+    <multipart-config>
+  		<location>C:/Temp</location>
+  		<max-file-size>20971520</max-file-size>
+  		<max-request-size>104857600</max-request-size>
+  		<file-size-threshold>1048576</file-size-threshold>
+  	</multipart-config>
     -->
     <bean id="multipartResolver"
     	class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
