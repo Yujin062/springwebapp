@@ -34,7 +34,7 @@
             </form>
          </div>
          <script>
-         	var saveFilename;
+         	var saveFilename="${saveFilename}";
             function fileupload() {
                //입력된 정보를 얻기
                const title = $("#title").val();
@@ -62,7 +62,10 @@
 	                     window.alert("파일 전송이 성공됨");
 	                  }  
 	                  saveFilename = data.saveFilename;
-	                  $(#link1).attr("href","filedownload?saveFilename=" + saveFilename);
+	                  //1)파일로 다운로드
+	                  $("#link1").attr("href","filedownload?saveFilename=" + saveFilename);
+	                  //2)올린 파일을 바로보기
+	                  $("#img1").attr("src","filedownload?saveFilename=" + saveFilename);
                	  }
                });
             }
@@ -74,14 +77,15 @@
             File Downlaod
          </div>
          <div class="card-body">
-            <a id="link1" href="#" class="btn btn-info btn-sm">파일 다운로드</a>
-            <a href="javascript:filedownload()" class="btn btn-info btn-sm" onclick="filedownload()">파일 보기</a>
+            <a id="link1" href="filedownload?saveFilename=${saveFilename}" class="btn btn-info btn-sm">파일 다운로드</a>
+            <a href="javascript:filedownload()" class="btn btn-info btn-sm">파일 보기</a>
             <hr/>
-            <!-- <img src="filedownload?fileNo=1" width="200px"/> -->
+            <img id="img1" src="filedownload?saveFilename=${saveFilename}" width="200px" class="mr-2" alt="이미지 파일을 올리지 않았음"/>
             <img id="downloadImg" width="200px"/>
          </div>
          <script type="text/javascript">
             function filedownload() {
+            	//3) 파일보기버튼을 클릭했을 때 올린 파일 보기
                $("#downloadImg").attr("src", "filedownload?saveFilename="+saveFilename);
             }
          </script>

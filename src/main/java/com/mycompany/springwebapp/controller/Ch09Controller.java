@@ -53,7 +53,7 @@ public class Ch09Controller {
 		return "redirect:/ch09/content";
 	}*/
 	@PostMapping("/fileupload")
-	public String fileupload(Ch09FileUpload fileUpload) throws Exception{
+	public String fileupload(Ch09FileUpload fileUpload , HttpSession session) throws Exception{
 		log.info("title: " + fileUpload.getTitle());
 		log.info("desc: " + fileUpload.getDesc());
 		log.info("originalFilename: " + fileUpload.getAttach().getOriginalFilename());
@@ -67,8 +67,10 @@ public class Ch09Controller {
 		File file = new File(saveFilepath);
 		fileUpload.getAttach().transferTo(file);
 		
+		session.setAttribute("saveFilename", saveFilename);
 		return "redirect:/ch09/content";
 	}
+	
 	@PostMapping(value="/fileuploadAjax", produces="application/json; charset=UTF-8")
 	@ResponseBody
 	public String fileuploadAjax(Ch09FileUpload fileUpload) throws Exception{
@@ -87,7 +89,7 @@ public class Ch09Controller {
 		
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("result", "success");
-		jsonObject.put("saveFilename", "saveFilename");
+		jsonObject.put("saveFilename", saveFilename);
 		String json = jsonObject.toString();
 		return json;
 	}
@@ -115,7 +117,6 @@ public class Ch09Controller {
 	      
 	      //응답 본문에 파일데이터 싣기
 	      OutputStream os = response.getOutputStream();
-	      InputStream is = new FileInputStream(filePath);
 	      Path path = Paths.get(filePath);
 	      Files.copy(path, os);
 	      os.flush();
