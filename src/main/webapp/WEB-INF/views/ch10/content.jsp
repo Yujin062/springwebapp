@@ -6,7 +6,7 @@
 <%-- index.jsp의 중앙 내용 --%>
 <div class="card m-2">
    <div class="card-header">
-       	파일 업로드와 다운로드
+       	예외 처리
    </div>
    <div class="card-body">
 	   	<div>
