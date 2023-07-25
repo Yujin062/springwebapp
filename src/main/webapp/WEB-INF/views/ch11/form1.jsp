@@ -19,6 +19,12 @@
 				<label for="mname">Name</label>
 				<form:input path="mname" class="form-control"/>
 			</div>
+			<div class="form-group">
+				<label for="mpassword">Password</label>
+				<form:password path="mpassword" class="form-control"/>
+			</div>
+			<form:hidden path="mnation"/>
+			<button class="btn btn-info btn-sm">Submit</button>
 		</form:form>
    </div>		
 </div>
