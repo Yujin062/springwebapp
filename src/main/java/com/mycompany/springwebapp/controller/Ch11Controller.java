@@ -1,6 +1,10 @@
 package com.mycompany.springwebapp.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,8 +39,22 @@ public class Ch11Controller {
    }
    
    @GetMapping("/form2")
-   public String form2(@ModelAttribute("member") Ch11Member member) {
-	  
+   public String form2(@ModelAttribute("member") Ch11Member member, Model model) {
+	   //드롭다운리스트(<select>)의 항목을 추가할 목적
+	   List<String> typeList = new ArrayList<>();
+	   typeList.add("일반회원");
+	   typeList.add("기업회원");
+	   typeList.add("헤드헌터회원");
+	   model.addAttribute("typeList", typeList); //request객체에 저장
+	   //기본값을 설정(member가 기본적으로 기업회원이 들어가있으므로 기업회원이 디폴트값으로 selected)
+	   member.setMtype("기업회원");
+	   
+	   List<String> jobList = new ArrayList<>();
+	   jobList.add("학생");
+	   jobList.add("개발자");
+	   jobList.add("디자이너");
+	   model.addAttribute("jobList", jobList); //request객체에 저장
+	   
 	   return "ch11/form2";
    }
    
