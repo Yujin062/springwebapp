@@ -81,6 +81,7 @@ public class Ch11Controller {
 	  languageList.add("JavaScript");
 	  languageList.add("HTML");
 	  model.addAttribute("languageList", languageList);
+	  member.setMlanguage(new String[] {"Java", "HTML"});
 	  
 	  return "ch11/form3";
    }
