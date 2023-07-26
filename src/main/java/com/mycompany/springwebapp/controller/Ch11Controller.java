@@ -93,14 +93,28 @@ public class Ch11Controller {
 	  
 	  return "ch11/form3";
    }
-   @GetMapping("/form4")
-   public String form4(@ModelAttribute("member") Ch11Member member) {
-	   
-	   return "ch11/form4";
-   }
   
    @PostMapping("/form3")
    public String handleForm3(@ModelAttribute("member") Ch11Member member) {
+	   log.info(member.toString());
+	   return "redirect:/ch11/content";
+   }
+   
+   @GetMapping("/form4")
+   public String form4(@ModelAttribute("member") Ch11Member member, Model model) {
+	   List<String>jobList = new ArrayList<>();
+	   jobList.add("학생");
+	   jobList.add("개발자");
+	   jobList.add("디자이너");
+	   jobList.add("100수");
+	   model.addAttribute("jobList", jobList);
+	   member.setMjob("100수");
+	   
+	   return "ch11/form4";
+   }
+   
+   @PostMapping("/form4")
+   public String handleForm4(@ModelAttribute("member") Ch11Member member) {
 	   log.info(member.toString());
 	   return "redirect:/ch11/content";
    }

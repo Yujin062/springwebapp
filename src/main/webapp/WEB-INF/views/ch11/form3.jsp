@@ -33,14 +33,14 @@
 			<button class="btn btn-info btn-sm">제출</button>
 		</form:form>
 		
-		<%-- <form:form modelAttribute="member" method="post" action="form3" class="mt-3">
+		<form:form modelAttribute="member" method="post" action="form3" class="mt-3">
 			<div>
 				<form:checkboxes items="${skillList}" path="mskill" 
 								 itemValue="code" itemLabel="label" 
 								 cssClass="mr-2" delimiter="&nbsp; | &nbsp;"/>
 			</div>
 			<button class="btn btn-info btn-sm">제출</button>
-		</form:form> --%>
+		</form:form> 
 	</div>
 </div>
 
