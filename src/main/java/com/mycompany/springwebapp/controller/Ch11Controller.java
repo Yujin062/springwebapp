@@ -118,4 +118,13 @@ public class Ch11Controller {
 	   log.info(member.toString());
 	   return "redirect:/ch11/content";
    }
+   
+   @GetMapping("/form5")
+   public String handleform5() {
+	   return "ch11/form5";
+   }
+   @PostMapping("/form5")
+   public String handleForm5() {
+	   return "redirect:/ch11/content";
+   }
 }
