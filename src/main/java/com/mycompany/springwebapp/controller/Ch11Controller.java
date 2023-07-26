@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.springwebapp.dto.Ch11City;
 import com.mycompany.springwebapp.dto.Ch11Member;
+import com.mycompany.springwebapp.dto.Ch11Skill;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -83,6 +84,24 @@ public class Ch11Controller {
 	  model.addAttribute("languageList", languageList);
 	  member.setMlanguage(new String[] {"Java", "HTML"});
 	  
+	  List<Ch11Skill> skillList = new ArrayList<>();
+	  skillList.add(new Ch11Skill(1, "Springframework"));
+	  skillList.add(new Ch11Skill(2, "BootStrap"));
+	  skillList.add(new Ch11Skill(3, "MyBatis"));
+	  model.addAttribute("skillList", skillList);
+	  member.setMskill(new int[] {1,2});
+	  
 	  return "ch11/form3";
+   }
+   @GetMapping("/form4")
+   public String form4(@ModelAttribute("member") Ch11Member member) {
+	   
+	   return "ch11/form4";
+   }
+  
+   @PostMapping("/form3")
+   public String handleForm3(@ModelAttribute("member") Ch11Member member) {
+	   log.info(member.toString());
+	   return "redirect:/ch11/content";
    }
 }
