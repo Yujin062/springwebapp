@@ -9,7 +9,7 @@
        	객체생성(싱글톤)과 의존주입
    </div>
    <div class="card-body">
-	 
+	 	실행결과는 콘솔 창의 로그로 출력
    </div>		
 </div>
 
