@@ -56,12 +56,32 @@ public class Ch11Controller {
 	   jobList.add("디자이너");
 	   model.addAttribute("jobList", jobList); //request객체에 저장
 	   
+	   //code와 value값이 다를경우 dto 객체에 두가지 필드값을 선언 후 각각 저장
 	   List<Ch11City> cityList = new ArrayList<>();
 	   cityList.add(new Ch11City(1, "서울"));
 	   cityList.add(new Ch11City(2, "부산"));
 	   cityList.add(new Ch11City(3, "제주"));
-	   
+	   model.addAttribute("cityList", cityList);
+	   member.setMcity(3);
 	   return "ch11/form2";
    }
    
+   @PostMapping("/form2")
+   public String handleForm2(@ModelAttribute("member") Ch11Member member) {
+	   log.info(member.toString());
+	   return "redirect:/ch11/content";
+   }
+   
+   @GetMapping("/form3")
+   public String form3(@ModelAttribute("member") Ch11Member member, Model model) {
+	  List<String> languageList = new ArrayList<>();
+	  languageList.add("C");
+	  languageList.add("Pythod");
+	  languageList.add("Java");
+	  languageList.add("JavaScript");
+	  languageList.add("HTML");
+	  model.addAttribute("languageList", languageList);
+	  
+	  return "ch11/form3";
+   }
 }
