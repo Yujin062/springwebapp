@@ -34,4 +34,10 @@ public class Ch11Controller {
 	   return "redirect:/ch11/content";
    }
    
+   @GetMapping("/form2")
+   public String form2(@ModelAttribute("member") Ch11Member member) {
+	  
+	   return "ch11/form2";
+   }
+   
 }

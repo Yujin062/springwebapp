@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <div class="card m-2">
@@ -44,7 +45,7 @@
 		  <button type="submit" class="btn btn-primary btn-sm">제출</button>
 		</form> --%>
 		
-		<form:form method="post" action="form2" modelAttribute="member">
+		<form:form modelAttribute="member">
 		  <div class="form-group">
 		    <label for="mtype">Type</label>
 		    <form:select path="mtype" items="${typeList}" class="form-control"/>
