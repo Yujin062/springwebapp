@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.mycompany.springwebapp.dto.Ch11City;
 import com.mycompany.springwebapp.dto.Ch11Member;
 
 import lombok.extern.slf4j.Slf4j;
@@ -54,6 +55,11 @@ public class Ch11Controller {
 	   jobList.add("개발자");
 	   jobList.add("디자이너");
 	   model.addAttribute("jobList", jobList); //request객체에 저장
+	   
+	   List<Ch11City> cityList = new ArrayList<>();
+	   cityList.add(new Ch11City(1, "서울"));
+	   cityList.add(new Ch11City(2, "부산"));
+	   cityList.add(new Ch11City(3, "제주"));
 	   
 	   return "ch11/form2";
    }
