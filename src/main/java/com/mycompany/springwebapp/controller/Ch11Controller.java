@@ -110,6 +110,12 @@ public class Ch11Controller {
 	   model.addAttribute("jobList", jobList);
 	   member.setMjob("100수");
 	   
+	   List<Ch11City> cityList = new ArrayList<>();
+	   cityList.add(new Ch11City(1, "서울"));
+	   cityList.add(new Ch11City(2, "부산"));
+	   cityList.add(new Ch11City(3, "제주"));
+	   model.addAttribute("cityList", cityList);
+	   member.setMcity(3);
 	   return "ch11/form4";
    }
    
@@ -120,7 +126,7 @@ public class Ch11Controller {
    }
    
    @GetMapping("/form5")
-   public String handleform5() {
+   public String form5() {
 	   return "ch11/form5";
    }
    @PostMapping("/form5")

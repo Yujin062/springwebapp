@@ -12,11 +12,29 @@
 	id가 없으면 클래스의 첫자를 소문자로 한 이름을 사용
 	-->
 	<bean class="com.mycompany.springwebapp.service.Ch12ServiceCreateByXml"/>
-	<bean id="name1" class="com.mycompany.springwebapp.service.Ch12ServiceCreateByXml"/> 
+	
+	<bean id="name1" 
+		  class="com.mycompany.springwebapp.service.Ch12ServiceCreateByXml"/> 
 	<!--================================================================================================================= -->
 	<!-- 정적메소드를 이용해서 객체를 생성 -->
 	<bean 
 		id="name2"
 		class="com.mycompany.springwebapp.service.Ch12ServiceCreateByXml"
 		factory-method="getInstance"/>
+	<!-- 인스턴스메소드를 이용해서 객체를 생성 -->
+	<bean 
+		id="name3"
+		factory-bean="name1"
+		factory-method="getselfObject"/> 
+	<!--================================================================================================================= -->
+	 <!-- DI 테스트를 위한 객체 생성 -->
+    <bean id="" class="com.mycompany.springwebapp.service.Ch12ServiceDiByXml">
+       <property name="ch12DaoByXml1" ref="daoByXml1"/>
+       <property name="ch12DaoByXml2" ref="daoByXml2"/>
+       <property name="ch12DaoByXml3" ref="daoByXml3"/>
+    </bean>
+   <bean id="daoByXml1" class="com.mycompany.springwebapp.dao.Ch12DaoByXml1"/>
+   <bean id="daoByXml2" class="com.mycompany.springwebapp.dao.Ch12DaoByXml2"></bean>
+   <bean id="daoByXml3" class="com.mycompany.springwebapp.dao.Ch12DaoByXml3"></bean>
+
 </beans>

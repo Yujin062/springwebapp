@@ -12,4 +12,15 @@ public class Ch12ServiceCreateByXml {
 		log.info("실행");
 		return new Ch12ServiceCreateByXml();
 	}
+	
+	public Ch12ServiceCreateByXml getselfObject() {
+		log.info("실행");
+		return new Ch12ServiceCreateByXml();
+	}
+	public void method1() {
+		log.info("실행");
+	}
+	public void method2() {
+		log.info("실행");
+	}
 }
