@@ -11,8 +11,8 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@ControllerAdvice
-@Component
+//@ControllerAdvice
+//@Component
 public class Ch10ExceptionHandler {	
 	@ExceptionHandler(NullPointerException.class)
 	public String handleNullPointerException() {
