@@ -2,8 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mycompany.springwebapp.dao.Ch13BoardDao">
    <insert id="insert" parameterType="Board">
-      insert into board(bno, btitle, bcontent, mid, bdate, bhitcount)
-      values(seq_bno.nextval, #{btitle}, #{bcontent}, #{mid}, sysdate, 0)
+	   	<selectKey keyProperty="bno" resultType="int" order="BEFORE">
+	   		select seq_bno.nextval from dual
+	   	</selectKey>
+	     insert into board(bno, btitle, bcontent, mid, bdate, bhitcount)
+	     values(#{bno}, #{btitle}, #{bcontent}, #{mid}, sysdate, 0)
    </insert>
    
    <select id="selectAll" resultType="Board">
