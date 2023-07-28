@@ -24,7 +24,7 @@ public class Ch13BoardDaoOld {
 	   3) 리턴값: 실제 테이블에 반영된 행의 수
 	   */
       int rows = sst.insert(
-    		  "com.mycompany.springwebapp.dao.mybatis.Ch13BoardDao.insert", 
+    		  "com.mycompany.springwebapp.dao.Ch13BoardDao.insert", 
     		  board
        );
       return rows;
@@ -32,20 +32,20 @@ public class Ch13BoardDaoOld {
    
    public List<Ch13Board> selectAll() {
       List<Ch13Board> list = sst.selectList(
-            "com.mycompany.springwebapp.dao.mybatis.Ch13BoardDao.selectAll"
+            "com.mycompany.springwebapp.dao.Ch13BoardDao.selectAll"
       );
       return list;
    }
    public Ch13Board selectByBno(int bno) {
 	   Ch13Board board = sst.selectOne(
-			   "com.mycompany.springwebapp.dao.mybatis.Ch13BoardDao.selectByBno",
+			   "com.mycompany.springwebapp.dao.Ch13BoardDao.selectByBno",
 			   bno
 		);
 	   return board;
    }
    public int updateByBno(Ch13Board board) {
    	   int rows = sst.update(
-		   "com.mycompany.springwebapp.dao.mybatis.Ch13BoardDao.updateByBno",
+		   "com.mycompany.springwebapp.dao.Ch13BoardDao.updateByBno",
 		   board
 	   );
 	   return rows;
@@ -53,7 +53,7 @@ public class Ch13BoardDaoOld {
    
    public int deleteByBno(int bno) {
 	   int rows = sst.delete(
-			   "com.mycompany.springwebapp.dao.mybatis.Ch13BoardDao.deleteByBno", 
+			   "com.mycompany.springwebapp.dao.Ch13BoardDao.deleteByBno", 
 			   bno
 	   );
 	   return rows;
