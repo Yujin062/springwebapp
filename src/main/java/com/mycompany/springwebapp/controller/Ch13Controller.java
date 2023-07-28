@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mycompany.springwebapp.dao.Ch13BoardDaoOld;
+import com.mycompany.springwebapp.dao.Ch13BoardDao;
 import com.mycompany.springwebapp.dto.Ch13Board;
 
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/ch13")
 public class Ch13Controller {
 	@Resource
-	private Ch13BoardDaoOld boardDaoOld;
+	private Ch13BoardDao boardDao;
 	
     @RequestMapping("/content")
     public String content(HttpSession session) {
@@ -36,14 +36,16 @@ public class Ch13Controller {
 	   board.setBcontent("한번만 성공해, 그 뒤로는 쉬워~");
 	   board.setMid("user");
 	   
-	   boardDaoOld.insert(board);
+	   //boardDaoOld.insert(board);
+	   boardDao.insert(board);
 	   
 	   return "redirect:/ch13/content";
    }
    
    @GetMapping("/getBoardList")
    public String getBoardList() {
-	   List<Ch13Board> list = boardDaoOld.selectAll();
+	   //List<Ch13Board> list = boardDaoOld.selectAll();
+	   List<Ch13Board> list = boardDao.selectAll();
 	   log.info(list.toString());
 	   return "redirect:/ch13/content";
    }
@@ -51,16 +53,19 @@ public class Ch13Controller {
    //update는 select를 한번 하고 변경해야함(안그러면 변경 안한 데이터 모두 null)
    @GetMapping("/updateBoard")
    public String updateBoard() {
-	   Ch13Board board = boardDaoOld.selectByBno(1);
+	   //Ch13Board board = boardDaoOld.selectByBno(1);
+	   Ch13Board board = boardDao.selectByBno(1);
 	   board.setBtitle("괴롭지 ?");
 	   board.setBcontent("한번만 성공해, 그 뒤로는 쉬워~");
 	   
-	   boardDaoOld.updateByBno(board);
+	   //boardDaoOld.updateByBno(board);
+	   boardDao.updateByBno(board);
 	   return "redirect:/ch13/content";
    }
    @GetMapping("/deleteBoard")
    public String deleletBoard(int bno) {
-	   boardDaoOld.deleteByBno(bno);
+	   //boardDaoOld.deleteByBno(bno);
+	   boardDao.deleteByBno(bno);
 	   return "redirect:/ch13/content";
    }
  
