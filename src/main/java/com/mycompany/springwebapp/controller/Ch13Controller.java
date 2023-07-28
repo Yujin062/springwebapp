@@ -1,5 +1,7 @@
 package com.mycompany.springwebapp.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -41,17 +43,24 @@ public class Ch13Controller {
    
    @GetMapping("/getBoardList")
    public String getBoardList() {
-	   boardDaoOld.selectAll();
+	   List<Ch13Board> list = boardDaoOld.selectAll();
+	   log.info(list.toString());
 	   return "redirect:/ch13/content";
    }
+   
+   //update는 select를 한번 하고 변경해야함(안그러면 변경 안한 데이터 모두 null)
    @GetMapping("/updateBoard")
    public String updateBoard() {
-	   boardDaoOld.updateByBno();
+	   Ch13Board board = boardDaoOld.selectByBno(1);
+	   board.setBtitle("괴롭지 ?");
+	   board.setBcontent("한번만 성공해, 그 뒤로는 쉬워~");
+	   
+	   boardDaoOld.updateByBno(board);
 	   return "redirect:/ch13/content";
    }
    @GetMapping("/deleteBoard")
-   public String deleletBoard() {
-	   boardDaoOld.deleteByBno();
+   public String deleletBoard(int bno) {
+	   boardDaoOld.deleteByBno(bno);
 	   return "redirect:/ch13/content";
    }
  
