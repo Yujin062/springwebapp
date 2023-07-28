@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mycompany.springwebapp.dao.mybatis.Ch13BoardDao">
+<mapper namespace="com.mycompany.springwebapp.dao.Ch13BoardDao">
    <insert id="insert" parameterType="Board">
       insert into board(bno, btitle, bcontent, mid, bdate, bhitcount)
       values(seq_bno.nextval, #{btitle}, #{bcontent}, #{mid}, sysdate, 0)
@@ -27,3 +27,4 @@
    		delete from board where bno=#{bno}
    </delete>
 </mapper>
+
