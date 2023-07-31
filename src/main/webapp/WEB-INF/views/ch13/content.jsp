@@ -28,13 +28,27 @@
        	회원 서비스
    </div>
    <div class="card-body">
-   		<div class="m-2">   		
-	 		<a href="join" class="btn btn-info btn-sm">회원가입</a>
-   		</div>
+   		<c:if test="${ch13Login == null }">   		
+	   		<div class="m-2">   		
+		 		<a href="join" class="btn btn-info btn-sm">회원가입</a>
+	   		</div>
+	   		<div class="m-2">   		
+		 		<a href="login" class="btn btn-info btn-sm">로그인</a>
+	   		</div>
+   		</c:if>
+   		<c:if test="${ch13Login != null }">
+   			<a href="logout" class="btn btn-info btn-sm">로그아웃</a>
+   			(현재: ${ch13Login.mid}님이 로그인 )
+   		</c:if> 
    </div>		
-   <div class="card-body">
+</div>
+<div class="card m-2">
+   <div class="card-header">
+       	게시판
+   </div>
+   <div class="card-body">		
    		<div class="m-2">   		
-	 		<a href="login" class="btn btn-info btn-sm">로그인</a>
+	 		<a href="getBoardList" class="btn btn-info btn-sm">게시물 목록 가져오기</a>
    		</div>
    </div>		
 </div>
