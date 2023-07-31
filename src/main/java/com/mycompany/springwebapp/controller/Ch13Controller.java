@@ -17,6 +17,7 @@ import com.mycompany.springwebapp.dto.Ch13Member;
 import com.mycompany.springwebapp.dto.Ch13Pager;
 import com.mycompany.springwebapp.service.Ch13BoardService;
 import com.mycompany.springwebapp.service.Ch13MemberService;
+import com.mycompany.springwebapp.service.Ch13MemberService.JoinResult;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -94,14 +95,15 @@ public class Ch13Controller {
    
    @PostMapping("/join")
    public String join(Ch13Member member, Model model) {
-	   Ch13Member dbMember = memberService.getMember(member.getMid());
-	   if(dbMember != null) {
+	   JoinResult result = memberService.join(member);
+	   //Ch13Member dbMember = memberService.getMember(member.getMid());
+	   if(result == JoinResult.FAIL_DUPLICATED_MID) {
 		   String error = "중복된 MID가 존재합니다.";
 		   model.addAttribute("error",error);
 		   return "ch13/joinForm";
+	   }else {
+		   memberService.join(member);
+		   return "redirect:/ch13/content";		   
 	   }
-	   memberService.join(member);
-	   return "redirect:/ch13/content";
    }
- 
 }

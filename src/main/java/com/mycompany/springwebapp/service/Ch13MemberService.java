@@ -9,7 +9,11 @@ public interface Ch13MemberService {
 		FAIL_MPASSWORD,
 		FAIL_ENABLED
 	}
-	public void join(Ch13Member member);
+	public static enum JoinResult{
+		SUCCESS,
+		FAIL_DUPLICATED_MID
+	}
+	public JoinResult join(Ch13Member member);
 	public  LoginResult login(Ch13Member member);
 	public void modify(Ch13Member member);
 	public void unjoin(String mid);
