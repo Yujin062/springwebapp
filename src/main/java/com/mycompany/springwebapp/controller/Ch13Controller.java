@@ -18,6 +18,7 @@ import com.mycompany.springwebapp.dto.Ch13Pager;
 import com.mycompany.springwebapp.service.Ch13BoardService;
 import com.mycompany.springwebapp.service.Ch13MemberService;
 import com.mycompany.springwebapp.service.Ch13MemberService.JoinResult;
+import com.mycompany.springwebapp.service.Ch13MemberService.LoginResult;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -105,5 +106,26 @@ public class Ch13Controller {
 		   memberService.join(member);
 		   return "redirect:/ch13/content";		   
 	   }
+   }
+   
+   @GetMapping("/login")
+   public String loginForm() {
+	   return "ch13/loginForm";
+   }
+   @PostMapping("/login")
+   public String login(Ch13Member member, Model model) {
+	   LoginResult result = memberService.login(member);
+	   String error = "";
+	   if(result == LoginResult.FAIL_MID) {
+		   error = "MID가 존재하지 않습니다.";
+	   }else if(result == LoginResult.FAIL_MPASSWORD) {
+		   error = "MID가 비활성화 되어 있습니다";
+	   }else if(result == LoginResult.FAIL_ENABLED) {
+		   error = "MPASSWORD가 일치하지 않습니다.";
+	   }else {
+		   return "redirect:/ch13/loginForm";
+	   }
+	   model.addAttribute("error", error);
+	   return "ch13/loginForm";
    }
 }

@@ -32,6 +32,11 @@
 	 		<a href="join" class="btn btn-info btn-sm">회원가입</a>
    		</div>
    </div>		
+   <div class="card-body">
+   		<div class="m-2">   		
+	 		<a href="login" class="btn btn-info btn-sm">로그인</a>
+   		</div>
+   </div>		
 </div>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
