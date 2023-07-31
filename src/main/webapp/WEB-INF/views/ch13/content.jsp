@@ -23,5 +23,15 @@
    		</div>
    </div>		
 </div>
+<div class="card m-2">
+   <div class="card-header">
+       	회원 서비스
+   </div>
+   <div class="card-body">
+   		<div class="m-2">   		
+	 		<a href="join" class="btn btn-info btn-sm">회원가입</a>
+   		</div>
+   </div>		
+</div>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

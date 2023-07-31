@@ -5,13 +5,18 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.springwebapp.dto.Ch13Board;
+import com.mycompany.springwebapp.dto.Ch13Member;
 import com.mycompany.springwebapp.dto.Ch13Pager;
 import com.mycompany.springwebapp.service.Ch13BoardService;
+import com.mycompany.springwebapp.service.Ch13MemberService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,12 +26,15 @@ import lombok.extern.slf4j.Slf4j;
 public class Ch13Controller {
 	@Resource
 	private Ch13BoardService boardService;
+	@Autowired
+	private Ch13MemberService memberService;
 	
     @RequestMapping("/content")
     public String content(HttpSession session) {
       
 	   return "ch13/content";
     }
+    
     
    @GetMapping("/insertBoard")
    public String insertBoard() {
@@ -77,6 +85,22 @@ public class Ch13Controller {
 	   int bno = 8;
 	   boardService.remove(bno);
 	   
+	   return "redirect:/ch13/content";
+   }
+   @GetMapping("/join")
+   public String joinForm() {
+	   return "ch13/joinForm";
+   }
+   
+   @PostMapping("/join")
+   public String join(Ch13Member member, Model model) {
+	   Ch13Member dbMember = memberService.getMember(member.getMid());
+	   if(dbMember != null) {
+		   String error = "중복된 MID가 존재합니다.";
+		   model.addAttribute("error",error);
+		   return "ch13/joinForm";
+	   }
+	   memberService.join(member);
 	   return "redirect:/ch13/content";
    }
  

@@ -11,5 +11,5 @@ public interface Ch13MemberDao {
 	public int insert(Ch13Member member);
 	public Ch13Member selectByMid(String mid);
 	//mpassword, memail만 수정
-	public int update (Ch13Member member); 
+	public int update(Ch13Member member); 
 }
