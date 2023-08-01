@@ -50,7 +50,7 @@ public class Ch13Controller {
 	private String fileUploadDir;
 	
     @RequestMapping("/content")
-    public String content(HttpSession session) {
+    public String content() {
       
 	   return "ch13/content";
     }
@@ -180,17 +180,14 @@ public class Ch13Controller {
 	
 	   return "redirect:/ch13/getBoardList";
    }
+   
    //update는 select를 한번 하고 변경해야함(안그러면 변경 안한 데이터 모두 null)
    @GetMapping("/updateBoard")
-   public String updateBoard() {
+   public String updateBoard(int bno, Model model) {
 	   //Ch13Board board = boardDaoOld.selectByBno(1);
-	   Ch13Board board = boardService.getBoard(8);
-	   board.setBtitle("변경 함 ㅎㅎ");
-	   board.setBcontent("룰루랄라룰루룰루");
-	   
-	   //boardDaoOld.updateByBno(board);
-	   boardService.modify(board);
-	   return "redirect:/ch13/content";
+	   Ch13Board board = boardService.getBoard(bno);
+	   model.addAttribute("board", board);
+	   return "ch13/updateBoardForm";
    }
    @GetMapping("/deleteBoard")
    public String deleletBoard() {  	

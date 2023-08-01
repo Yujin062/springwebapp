@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Repository
 @Slf4j
-public class Ch13BoardDaoimpl {
+public class Ch13BoardDaoimpl{
    @Resource
    private SqlSessionTemplate sst;
    
@@ -32,7 +32,7 @@ public class Ch13BoardDaoimpl {
    
    public List<Ch13Board> selectAll() {
       List<Ch13Board> list = sst.selectList(
-            "com.mycompany.springwebapp.dao.Ch13BoardDao.selectByPage"
+            "om.mycompany.springwebapp.dao.Ch13BoardDao.selectByPage"
       );
       return list;
    }
