@@ -23,7 +23,7 @@
 				
 			<div class="mt-3">
 				<button class="btn btn-info btn-sm mr-2">수정하기</button>
-				<a class="btn btn-info btn-sm" href="boardList">목록보기</a>
+				<a class="btn btn-info btn-sm" href="getboardList">목록보기</a>
 			</div>
 		</form>
 	</div>
